@@ -53,8 +53,8 @@
                            @php($i=1)
                            @foreach($abouts as $about)
                            <tr class="bg-white border-b">
-                              <td class="py-4 px-6 font-atma text-sm font-medium text-gray-800 whitespace-nowrap">
-                                 {{$i++}}
+                              <td scope="row" class="py-4 px-6 font-atma text-sm font-medium text-gray-800 whitespace-nowrap">
+                                 {{$abouts->firstItem()+$loop->index}}
                               </td>
                               <td class="py-4 px-6 font-atma text-sm font-medium text-gray-800 whitespace-nowrap">
                                  {{$about->title}}
@@ -73,6 +73,7 @@
                            @endforeach
                         </tbody>
                      </table>
+                     {{$abouts->links()}}
                   </div>
                </div>
             </div>
