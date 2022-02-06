@@ -18,14 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/////////         About Route        //////////
+/////////         About Route        ///////////
 
 
 Route::group(['prefix' => '/admin/about', 'middleware' => 'auth'], function () {
     Route::get('/all', [AboutController::class, 'aboutShow'])->name('about.all');
-    Route::get('/edit', [AboutController::class, 'aboutEdit'])->name('about.edit');
-    Route::post('/update', [AboutController::class, 'aboutUpdate'])->name('about.update');
-    Route::get('/delete', [AboutController::class, 'aboutDelete'])->name('about.delete');
+    Route::get('/add', [AboutController::class, 'aboutAdd'])->name('about.add');
+    Route::post('/store', [AboutController::class, 'aboutStore'])->name('about.store');
+    Route::get('/edit/{id}', [AboutController::class, 'aboutEdit'])->name('about.edit');
+    Route::post('/update/{id}', [AboutController::class, 'aboutUpdate'])->name('about.update');
+    Route::get('/delete/{id}', [AboutController::class, 'aboutDelete'])->name('about.delete');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
