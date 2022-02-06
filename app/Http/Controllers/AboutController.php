@@ -24,9 +24,9 @@ class AboutController extends Controller
     public function aboutStore(Request $request)
     {
         $images = $request->file('image');
-        $size = $request->file('image')->getSize();
 
         if ($images) {
+            $size = $request->file('image')->getSize();
             if ($size <= 5000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                 $last_img = 'images/about/' . $name_gen;
@@ -42,7 +42,7 @@ class AboutController extends Controller
             } else {
                 return Redirect()->route('about.all')->with('error', 'Image is greater than 5 MB');
             }
-        } else {
+        } elseif (empty($images)) {
             $abouts = new About();
             $abouts->title = $request->title;
             $abouts->description = $request->description;
@@ -60,39 +60,66 @@ class AboutController extends Controller
 
     public function aboutUpdate(Request $request, $id)
     {
-        $old_image = $request->old_image;
+        $old_image = About::find($id)->image;
         $images = $request->file('image');
-        $size = $request->file('image')->getSize();
 
         if ($images) {
-            if ($size <= 5000000) {
-                unlink($old_image);
-                $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                $last_img = 'images/about/' . $name_gen;
-                Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+            $size = $request->file('image')->getSize();
+            if (empty($old_image)) {
+                if ($size <= 5000000) {
+                    $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                    $last_img = 'images/about/' . $name_gen;
+                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
 
-                $abouts = new About();
-                $abouts->title = $request->title;
-                $abouts->description = $request->description;
-                $abouts->image = $last_img;
-                $abouts->find($id)->update();
+                    $abouts = About::findOrFail($id);
+                    $abouts->title = $request->title;
+                    $abouts->description = $request->description;
+                    $abouts->image = $last_img;
+                    $abouts->update();
 
-                return Redirect()->route('about.all')->with('success', 'About content Updated Successfully');
+                    return Redirect()->route('about.all')->with('success', 'About content Updated Successfully');
+                } else {
+                    return Redirect()->route('about.all')->with('error', 'Image is greater than 5 MB');
+                }
             } else {
-                return Redirect()->route('about.all')->with('error', 'Image is greater than 5 MB');
+                if ($size <= 5000000) {
+                    unlink($old_image);
+                    $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                    $last_img = 'images/about/' . $name_gen;
+                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+
+                    $abouts = About::findOrFail($id);
+                    $abouts->title = $request->title;
+                    $abouts->description = $request->description;
+                    $abouts->image = $last_img;
+                    $abouts->update();
+
+                    return Redirect()->route('about.all')->with('success', 'About content Updated Successfully');
+                } else {
+                    return Redirect()->route('about.all')->with('error', 'Image is greater than 5 MB');
+                }
             }
         } else {
-            $abouts = new About();
+            $abouts = About::findOrFail($id);
             $abouts->title = $request->title;
             $abouts->description = $request->description;
-            $abouts->find($id)->update();
+            $abouts->update();
+            // dd($abouts);
 
             return Redirect()->route('about.all')->with('success', 'About content Updated Successfully');
         }
     }
 
-    public function aboutDelete()
+    public function aboutDelete($id)
     {
-        return view('admin.about.about_delete');
+        $old_image = About::find($id)->image;
+        if (empty($old_image)) {
+            About::find($id)->delete();
+            return Redirect()->back()->with('success', 'Content Deleted Successfully');
+        } else {
+            unlink($old_image);
+            About::find($id)->delete();
+            return Redirect()->back()->with('success', 'Content Deleted Successfully');
+        }
     }
 }
