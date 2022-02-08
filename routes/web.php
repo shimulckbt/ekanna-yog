@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\UpcomingWorkController;
 use App\Http\Controllers\FooterController;
+use App\Http\Controllers\CampController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,17 +28,6 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
-
-    //////////          ROUTE START FOR ABOUT          //////////
-
-    Route::get('/about/all', [AboutController::class, 'aboutShow'])->name('about.all');
-    Route::get('/about/add', [AboutController::class, 'aboutAdd'])->name('about.add');
-    Route::post('/about/store', [AboutController::class, 'aboutStore'])->name('about.store');
-    Route::get('/about/edit/{id}', [AboutController::class, 'aboutEdit'])->name('about.edit');
-    Route::post('/about/update/{id}', [AboutController::class, 'aboutUpdate'])->name('about.update');
-    Route::get('/about/delete/{id}', [AboutController::class, 'aboutDelete'])->name('about.delete');
-
-    //////////          ROUTE END FOR ABOUT          //////////
 
     //////////          ROUTE START FOR HOME          //////////
 
@@ -87,6 +77,18 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     /////////////        HOME RELATED ROUTING ENDED         ////////
 
 
+    //////////          ROUTE START FOR ABOUT          //////////
+
+    Route::get('/about/all', [AboutController::class, 'aboutShow'])->name('about.all');
+    Route::get('/about/add', [AboutController::class, 'aboutAdd'])->name('about.add');
+    Route::post('/about/store', [AboutController::class, 'aboutStore'])->name('about.store');
+    Route::get('/about/edit/{id}', [AboutController::class, 'aboutEdit'])->name('about.edit');
+    Route::post('/about/update/{id}', [AboutController::class, 'aboutUpdate'])->name('about.update');
+    Route::get('/about/delete/{id}', [AboutController::class, 'aboutDelete'])->name('about.delete');
+
+    //////////          ROUTE END FOR ABOUT          //////////
+
+
     //////////          ROUTE START FOR CONTACT          //////////
 
     Route::get('/contact/all', [ContactController::class, 'contactShow'])->name('contact.all');
@@ -98,7 +100,31 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
 
     //////////          ROUTE END FOR CONTACT          //////////
 
-    //////////          ROUTE START FOR FOOTER          //////////
+
+
+
+
+
+
+    /////////          ROUTE STARTS FOR CAMP         ///////////
+
+    Route::get('/camp/all', [CampController::class, 'campShow'])->name('camp.all');
+    Route::get('/camp/add', [CampController::class, 'campAdd'])->name('camp.add');
+    Route::post('/camp/store', [CampController::class, 'campStore'])->name('camp.store');
+    Route::get('/camp/edit/{id}', [CampController::class, 'campEdit'])->name('camp.edit');
+    Route::post('/camp/update/{id}', [CampController::class, 'campUpdate'])->name('camp.update');
+    Route::get('/camp/delete/{id}', [CampController::class, 'campDelete'])->name('camp.delete');
+
+    /////////          ROUTE ENDS FOR CAMP         ///////////
+
+
+
+
+
+
+
+
+    //////////          ROUTE STARTS FOR FOOTER          //////////
 
     Route::get('/footer/all', [FooterController::class, 'footerShow'])->name('footer.all');
     Route::get('/footer/add', [FooterController::class, 'footerAdd'])->name('footer.add');

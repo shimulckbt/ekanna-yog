@@ -28,7 +28,7 @@
                                 </x-jet-dropdown-link>
 
                                 <x-jet-dropdown-link href="{{ route('slide.all') }}">
-                                    {{ __('স্লাইড ম্যানেজ') }}
+                                    {{ __('রানিং ওয়ার্ক') }}
                                 </x-jet-dropdown-link>
 
                                 <x-jet-dropdown-link href="{{ route('upcoming-work.all') }}">
@@ -52,7 +52,7 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('camp.all') }}" :active="request()->routeIs('camp.all')">
                         {{ __('ক্যাম্প ম্যানেজ') }}
                     </x-jet-nav-link>
                 </div>
