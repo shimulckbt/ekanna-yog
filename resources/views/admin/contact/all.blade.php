@@ -23,7 +23,7 @@
             <span class="font-medium">{{session('error')}}</span>
          </div>
          @endif
-         <a href="{{route('about.add')}}"><button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add New</button></a>
+         <a href="{{route('contact.add')}}"><button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add New</button></a>
          <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
@@ -35,13 +35,13 @@
                                  ক্রম
                               </th>
                               <th scope="col" width="15%" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-900 uppercase">
-                                 টাইটেল
+                                 নাম
                               </th>
-                              <th scope="col" width="50%" class="text-center py-3 px-6 text-xs font-medium tracking-wider text-gray-900 uppercase">
-                                 বর্ণনা
+                              <th scope="col" width="50%" class="text-left py-3 px-6 text-xs font-medium tracking-wider text-gray-900 uppercase">
+                                 ইমেইল
                               </th>
-                              <th scope="col" width="15%" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-900 uppercase">
-                                 ছবি
+                              <th scope="col" width="15%" class="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-900 uppercase">
+                                 বার্তা
                               </th>
                               <th scope="col" width="15%" class="text-center py-3 text-xs font-medium tracking-wider text-gray-900 uppercase">
                                  প্রক্রিয়া
@@ -50,29 +50,32 @@
                         </thead>
                         <tbody>
                            <!-- Abou Contents -->
-                           @foreach($abouts as $about)
+                           @foreach($contacts as $contact)
                            <tr class="bg-white border-b">
                               <td scope="row" class="py-4 px-6 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                 {{$abouts->firstItem()+$loop->index}}
+                                 {{$contacts->firstItem()+$loop->index}}
                               </td>
                               <td class="py-4 px-6 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                 {{$about->title}}
+                                 {{$contact->first_name.' '.$contact->last_name}}
                               </td>
-                              <td class="text-center py-4 px-6 h-1 text-sm text-gray-800 overflow-y-auto whitespace-wrap">
-                                 <textarea class="border-none bg-transparent outline-none resize-none" disabled cols="60" rows="1">{{$about->description}}</textarea>
+
+                              <td class="py-4 px-6 text-sm font-medium text-gray-800 whitespace-nowrap">
+                                 {{$contact->email}}
                               </td>
-                              <td class="py-4 px-6 text-smwhitespace-nowrap">
-                                 <img class="h-12 w-10" src="{{asset($about->image)}}" alt="no image">
+
+                              <td class="text-left py-4 px-6 h-1 text-sm text-gray-800 overflow-y-auto whitespace-wrap">
+                                 <textarea class="border-none bg-transparent outline-none resize-none" disabled cols="40" rows="1">{{$contact->message}}</textarea>
                               </td>
+
                               <td class="px-6 text-sm text-center whitespace-nowrap">
-                                 <a href="{{url('admin/about/edit/'.$about->id)}}"><button class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center mr-2 ">Edit</button></a>
-                                 <a href="{{url('admin/about/delete/'.$about->id)}}"><button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center mr-2">Delete</button></a>
+                                 <a href="{{url('admin/contact/edit/'.$contact->id)}}"><button class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center mr-2 ">Edit</button></a>
+                                 <a href="{{url('admin/contact/delete/'.$contact->id)}}"><button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center mr-2">Delete</button></a>
                               </td>
                            </tr>
                            @endforeach
                         </tbody>
                      </table>
-                     {{$abouts->links()}}
+                     {{$contacts->links()}}
                   </div>
                </div>
             </div>

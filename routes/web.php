@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +22,31 @@ Route::get('/', function () {
 /////////         About Route        ///////////
 
 
-Route::group(['prefix' => '/admin/about', 'middleware' => 'auth'], function () {
-    Route::get('/all', [AboutController::class, 'aboutShow'])->name('about.all');
-    Route::get('/add', [AboutController::class, 'aboutAdd'])->name('about.add');
-    Route::post('/store', [AboutController::class, 'aboutStore'])->name('about.store');
-    Route::get('/edit/{id}', [AboutController::class, 'aboutEdit'])->name('about.edit');
-    Route::post('/update/{id}', [AboutController::class, 'aboutUpdate'])->name('about.update');
-    Route::get('/delete/{id}', [AboutController::class, 'aboutDelete'])->name('about.delete');
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
+
+    //////////          ROUTE START FOR ABOUT          //////////
+
+    Route::get('/about/all', [AboutController::class, 'aboutShow'])->name('about.all');
+    Route::get('/about/add', [AboutController::class, 'aboutAdd'])->name('about.add');
+    Route::post('/about/store', [AboutController::class, 'aboutStore'])->name('about.store');
+    Route::get('/about/edit/{id}', [AboutController::class, 'aboutEdit'])->name('about.edit');
+    Route::post('/about/update/{id}', [AboutController::class, 'aboutUpdate'])->name('about.update');
+    Route::get('/about/delete/{id}', [AboutController::class, 'aboutDelete'])->name('about.delete');
+
+    //////////          ROUTE END FOR ABOUT          //////////
+
+    //////////          ROUTE START FOR CONTACT          //////////
+
+    Route::get('/contact/all', [ContactController::class, 'contactShow'])->name('contact.all');
+    Route::get('/contact/add', [ContactController::class, 'contactAdd'])->name('contact.add');
+    Route::post('/contact/store', [ContactController::class, 'contactStore'])->name('contact.store');
+    Route::get('/contact/edit/{id}', [ContactController::class, 'contactEdit'])->name('contact.edit');
+    Route::post('/contact/update/{id}', [ContactController::class, 'contactUpdate'])->name('contact.update');
+    Route::get('/contact/delete/{id}', [ContactController::class, 'contactDelete'])->name('contact.delete');
+
+    //////////          ROUTE END FOR CONTACT          //////////
+
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

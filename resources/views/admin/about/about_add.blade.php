@@ -1,6 +1,6 @@
 <x-app-layout>
    <x-slot name="header">
-      <h2 class="font-semibold font-atma text-xl text-gray-800 leading-tight">
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
          {{ __('এবাউট পেজ কন্টেন্ট') }}
       </h2>
    </x-slot>
@@ -12,6 +12,10 @@
             <div class="mb-6">
                <label for="title" class="block mb-2 text-sm font-medium text-gray-900">About Title</label>
                <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Title" required>
+            </div>
+            <div class="mb-6">
+               <label for="yt_link" class="block mb-2 text-sm font-medium text-gray-900">YouTube</label>
+               <input type="text" name="yt_link" id="yt_link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="YouTube">
             </div>
             <div class="mb-6">
                <label for="image" class="block mb-2 text-sm font-medium text-gray-900">Title Image</label>

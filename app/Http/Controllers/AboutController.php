@@ -34,6 +34,7 @@ class AboutController extends Controller
 
                 $abouts = new About();
                 $abouts->title = $request->title;
+                $abouts->yt_link = $request->yt_link;
                 $abouts->description = $request->description;
                 $abouts->image = $last_img;
                 $abouts->save();
@@ -45,6 +46,7 @@ class AboutController extends Controller
         } elseif (empty($images)) {
             $abouts = new About();
             $abouts->title = $request->title;
+            $abouts->yt_link = $request->yt_link;
             $abouts->description = $request->description;
             $abouts->save();
 
@@ -73,6 +75,7 @@ class AboutController extends Controller
 
                     $abouts = About::findOrFail($id);
                     $abouts->title = $request->title;
+                    $abouts->yt_link = $request->yt_link;
                     $abouts->description = $request->description;
                     $abouts->image = $last_img;
                     $abouts->update();
@@ -90,6 +93,7 @@ class AboutController extends Controller
 
                     $abouts = About::findOrFail($id);
                     $abouts->title = $request->title;
+                    $abouts->yt_link = $request->yt_link;
                     $abouts->description = $request->description;
                     $abouts->image = $last_img;
                     $abouts->update();
@@ -102,6 +106,7 @@ class AboutController extends Controller
         } else {
             $abouts = About::findOrFail($id);
             $abouts->title = $request->title;
+            $abouts->yt_link = $request->yt_link;
             $abouts->description = $request->description;
             $abouts->update();
             // dd($abouts);

@@ -11,27 +11,27 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden font-atma space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('ড্যাশবোর্ড') }}
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden font-atma space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('হোম ম্যানেজ') }}
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden font-atma space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('about.all') }}" :active="request()->routeIs('dashboard')">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('about.all') }}" :active="request()->routeIs('about.all')">
                         {{ __('এবাউট ম্যানেজ') }}
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden font-atma space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('contact.all') }}" :active="request()->routeIs('contact.all')">
                         {{ __('কন্টাক্ট ম্যানেজ') }}
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden font-atma space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('ক্যাম্প ম্যানেজ') }}
                     </x-jet-nav-link>
