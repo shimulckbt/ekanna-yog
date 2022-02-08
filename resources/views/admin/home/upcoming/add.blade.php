@@ -1,21 +1,17 @@
 <x-app-layout>
    <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-         {{ __('স্টার্টিং পেজ কন্টেন্ট') }}
+         {{ __('আপকামিং ওয়ার্ক কন্টেন্ট') }}
       </h2>
    </x-slot>
 
    <div class="py-8">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-         <form action="{{route('home-start.store')}}" method="post" enctype="multipart/form-data">
+         <form action="{{route('upcoming-work.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-6">
                <label for="title" class="block mb-2 text-sm font-medium text-gray-900">পেজ টাইটেল</label>
                <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="পেজ টাইটেল লিখুন" required>
-            </div>
-            <div class="mb-6">
-               <label for="yt_link" class="block mb-2 text-sm font-medium text-gray-900">ইউটিউব লিংক</label>
-               <input type="text" name="yt_link" id="yt_link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ইউটিউব লিংক যুক্ত করুন">
             </div>
             <div class="mb-6">
                <label for="image" class="block mb-2 text-sm font-medium text-gray-900">ছবি যুক্ত করুব</label>

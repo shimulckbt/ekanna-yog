@@ -1,13 +1,13 @@
 <x-app-layout>
    <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-         {{ __('স্টার্টিং পেজ কন্টেন্ট') }}
+         {{ __('স্লাইড পেজ কন্টেন্ট') }}
       </h2>
    </x-slot>
 
    <div class="py-8">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-         <form action="{{route('home-start.store')}}" method="post" enctype="multipart/form-data">
+         <form action="{{route('slide.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-6">
                <label for="title" class="block mb-2 text-sm font-medium text-gray-900">পেজ টাইটেল</label>

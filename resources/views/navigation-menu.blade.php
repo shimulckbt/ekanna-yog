@@ -27,11 +27,11 @@
                                     {{ __('স্টার্টিং কন্টেন্ট') }}
                                 </x-jet-dropdown-link>
 
-                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                <x-jet-dropdown-link href="{{ route('slide.all') }}">
                                     {{ __('স্লাইড ম্যানেজ') }}
                                 </x-jet-dropdown-link>
 
-                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                <x-jet-dropdown-link href="{{ route('upcoming-work.all') }}">
                                     {{ __('আপকামিং ওয়ার্ক') }}
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
