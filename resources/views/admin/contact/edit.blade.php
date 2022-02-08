@@ -11,20 +11,20 @@
             @csrf
             <div class="mb-6">
                <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">নাম</label>
-               <input type="text" name="first_name" id="first_name" value="{{$contacts->first_name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="First Name" required>
+               <input type="text" name="first_name" id="first_name" value="{{$contacts->first_name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="আপনার নাম" required>
             </div>
             <div class="mb-6">
                <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900">টাইটেল</label>
-               <input type="text" name="last_name" id="last_name" value="{{$contacts->last_name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Last Name">
+               <input type="text" name="last_name" id="last_name" value="{{$contacts->last_name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="আপনার টাইটেল">
             </div>
             <div class="mb-6">
                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">ইমেইল</label>
-               <input type="text" name="email" id="email" value="{{$contacts->email}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+               <input type="text" name="email" placeholder="আপনার ইমেইল" id="email" value="{{$contacts->email}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
 
             <div class="mb-6">
                <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">মোবাইল</label>
-               <input type="text" name="phone" id="phone" value="{{$contacts->phone}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+               <input type="text" name="phone" id="phone" placeholder="আপনার মোবাইল নাম্বার" value="{{$contacts->phone}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
 
             <div class="mb-6">

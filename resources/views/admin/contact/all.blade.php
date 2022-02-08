@@ -23,7 +23,7 @@
             <span class="font-medium">{{session('error')}}</span>
          </div>
          @endif
-         <a href="{{route('contact.add')}}"><button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add New</button></a>
+         <a href="{{route('contact.add')}}"><button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">নতুন যুক্ত করুন</button></a>
          <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
@@ -37,10 +37,10 @@
                               <th scope="col" width="15%" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-900 uppercase">
                                  নাম
                               </th>
-                              <th scope="col" width="50%" class="text-left py-3 px-6 text-xs font-medium tracking-wider text-gray-900 uppercase">
+                              <th scope="col" width="15%" class="text-left py-3 px-6 text-xs font-medium tracking-wider text-gray-900 uppercase">
                                  ইমেইল
                               </th>
-                              <th scope="col" width="15%" class="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-900 uppercase">
+                              <th scope="col" width="50%" class="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-900 uppercase">
                                  বার্তা
                               </th>
                               <th scope="col" width="15%" class="text-center py-3 text-xs font-medium tracking-wider text-gray-900 uppercase">
@@ -63,13 +63,13 @@
                                  {{$contact->email}}
                               </td>
 
-                              <td class="text-left py-4 px-6 h-1 text-sm text-gray-800 overflow-y-auto whitespace-wrap">
+                              <td class="text-center py-4 px-6 h-1 text-sm text-gray-800 overflow-y-auto whitespace-wrap">
                                  <textarea class="border-none bg-transparent outline-none resize-none" disabled cols="40" rows="1">{{$contact->message}}</textarea>
                               </td>
 
                               <td class="px-6 text-sm text-center whitespace-nowrap">
-                                 <a href="{{url('admin/contact/edit/'.$contact->id)}}"><button class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center mr-2 ">Edit</button></a>
-                                 <a href="{{url('admin/contact/delete/'.$contact->id)}}"><button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center mr-2">Delete</button></a>
+                                 <a href="{{url('admin/contact/edit/'.$contact->id)}}"><button class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center mr-2 ">দেখুন</button></a>
+                                 <a href="{{url('admin/contact/delete/'.$contact->id)}}"><button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center mr-2">মুছুন</button></a>
                               </td>
                            </tr>
                            @endforeach
