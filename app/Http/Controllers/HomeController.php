@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\HomeStart;
+use App\Models\VideoLink;
 use Image;
 
 class HomeController extends Controller
@@ -129,5 +130,54 @@ class HomeController extends Controller
         }
     }
 
-    ///////     HOME START CONTENT CONTROLLING METHOD       /////
+    ///////     HOME START CONTENT CONTROLLING METHODS END       /////
+
+
+
+    ///////     VIDEO LINK CONTENT CONTROLLING METHODS STARTS       /////
+
+    public function videoLinkShow()
+    {
+        $videoLinks = VideoLink::latest()->paginate(5);
+        return view('admin.home.video.all', compact('videoLinks'));
+    }
+
+    public function videoLinkAdd()
+    {
+        return view('admin.home.video.add');
+    }
+
+    public function videoLinkStore(Request $request)
+    {
+        $videoLinks = new VideoLink();
+        $videoLinks->title = $request->title;
+        $videoLinks->video_link = $request->video_link;
+        $videoLinks->save();
+
+        return Redirect()->route('video-link.all')->with('success', 'Video Link Inserted Successfully');
+    }
+
+    public function videoLinkEdit($id)
+    {
+        $videoLinks = VideoLink::findOrFail($id);
+        return view('admin.home.video.edit', compact('videoLinks'));
+    }
+
+    public function videoLinkUpdate(Request $request, $id)
+    {
+        $videoLinks = VideoLink::findOrFail($id);
+        $videoLinks->title = $request->title;
+        $videoLinks->video_link = $request->video_link;
+        $videoLinks->update();
+
+        return Redirect()->route('video-link.all')->with('success', 'Video Link Updated Successfully');
+    }
+
+    public function videoLinkDelete($id)
+    {
+        VideoLink::find($id)->delete();
+        return Redirect()->back()->with('success', 'Video Link Deleted Successfully');
+    }
+
+    ///////     VIDEO LINK CONTENT CONTROLLING METHODS END       /////
 }

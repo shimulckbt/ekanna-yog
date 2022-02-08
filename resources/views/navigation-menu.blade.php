@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img class="rounded-full" style="width: 50px;height: 50px;" src="{{asset('/images/sml.jpg')}}" alt="image">
+                        <img class="rounded-full" style="width: 50px;height: 50px;" src="{{asset('/images/ekannayog.png')}}" alt="image">
                     </a>
                 </div>
 
@@ -34,7 +34,7 @@
                                 <x-jet-dropdown-link href="{{ route('upcoming-work.all') }}">
                                     {{ __('আপকামিং ওয়ার্ক') }}
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                <x-jet-dropdown-link href="{{ route('video-link.all') }}">
                                     {{ __('ইউটিউব লিংক') }}
                                 </x-jet-dropdown-link>
                             </x-slot>
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('footer.all') }}" :active="request()->routeIs('footer.all')">
                         {{ __('ফুটার ম্যানেজ') }}
                     </x-jet-nav-link>
                 </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\UpcomingWorkController;
+use App\Http\Controllers\FooterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +50,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
 
     //////////          ROUTE END FOR HOMESTART          //////////
 
-    //////////          ROUTE END FOR UPCOMMING          //////////
+    //////////          ROUTE END FOR UPCOMMING WPRKS          //////////
 
     Route::get('/home/upcoming/all', [UpcomingWorkController::class, 'upcomingWorkShow'])->name('upcoming-work.all');
     Route::get('/home/upcoming/add', [UpcomingWorkController::class, 'upcomingWorkAdd'])->name('upcoming-work.add');
@@ -58,7 +59,18 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::post('/home/upcoming/update/{id}', [UpcomingWorkController::class, 'upcomingWorkUpdate'])->name('upcoming-work.update');
     Route::get('/home/upcoming/delete/{id}', [UpcomingWorkController::class, 'upcomingWorkDelete'])->name('upcoming-work.delete');
 
-    //////////          ROUTE END FOR UPCOMMING          //////////
+    //////////          ROUTE END FOR UPCOMMING WORKS          //////////
+
+    //////////          ROUTE START FOR VIDEO LINK          //////////
+
+    Route::get('/home/video/all', [HomeController::class, 'videoLinkShow'])->name('video-link.all');
+    Route::get('/home/video/add', [HomeController::class, 'videoLinkAdd'])->name('video-link.add');
+    Route::post('home/video/store', [HomeController::class, 'videoLinkStore'])->name('video-link.store');
+    Route::get('/home/video/edit/{id}', [HomeController::class, 'videoLinkEdit'])->name('video-link.edit');
+    Route::post('/home/video/update/{id}', [HomeController::class, 'videoLinkUpdate'])->name('video-link.update');
+    Route::get('/home/video/delete/{id}', [HomeController::class, 'videoLinkDelete'])->name('video-link.delete');
+
+    //////////          ROUTE END FOR VIDEO LINK          //////////
 
 
     //////////          ROUTE END FOR Slide          //////////
@@ -85,6 +97,17 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/contact/delete/{id}', [ContactController::class, 'contactDelete'])->name('contact.delete');
 
     //////////          ROUTE END FOR CONTACT          //////////
+
+    //////////          ROUTE START FOR FOOTER          //////////
+
+    Route::get('/footer/all', [FooterController::class, 'footerShow'])->name('footer.all');
+    Route::get('/footer/add', [FooterController::class, 'footerAdd'])->name('footer.add');
+    Route::post('/footer/store', [FooterController::class, 'footerStore'])->name('footer.store');
+    Route::get('/footer/edit/{id}', [FooterController::class, 'footerEdit'])->name('footer.edit');
+    Route::post('/footer/update/{id}', [FooterController::class, 'footerUpdate'])->name('footer.update');
+    Route::get('/footer/delete/{id}', [FooterController::class, 'footerDelete'])->name('footer.delete');
+
+    //////////          ROUTE END FOR FOOTER          //////////
 
 
 });
