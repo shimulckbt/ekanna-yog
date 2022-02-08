@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,17 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/about/delete/{id}', [AboutController::class, 'aboutDelete'])->name('about.delete');
 
     //////////          ROUTE END FOR ABOUT          //////////
+
+    //////////          ROUTE START FOR HOME          //////////
+
+    Route::get('/home/start/all', [HomeController::class, 'homeStartShow'])->name('home-start.all');
+    Route::get('/home/start/add', [HomeController::class, 'homeStartAdd'])->name('home-start.add');
+    Route::post('home/start/store', [HomeController::class, 'homeStartStore'])->name('home-start.store');
+    Route::get('/home/start/edit/{id}', [HomeController::class, 'homeStartEdit'])->name('home-start.edit');
+    Route::post('home/start/update/{id}', [HomeController::class, 'homeStartUpdate'])->name('home-start.update');
+    Route::get('/home/start/delete/{id}', [HomeController::class, 'homeStartDelete'])->name('home-start.delete');
+
+    //////////          ROUTE END FOR HOME          //////////
 
     //////////          ROUTE START FOR CONTACT          //////////
 

@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class About extends Model
+class HomeStart extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'image',
+        'tutle',
         'description',
         'yt_link',
+        'image',
     ];
 }

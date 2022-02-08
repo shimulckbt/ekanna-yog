@@ -16,9 +16,29 @@
                         {{ __('ড্যাশবোর্ড') }}
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('হোম ম্যানেজ') }}
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex cursor-pointer mr-2 pt-5">
+                    <x-jet-nav-link :active="request()->routeIs('home-start.all')">
+                        <x-jet-dropdown>
+                            <x-slot name="trigger">
+                                {{ __('হোম ম্যানেজ') }}
+                            </x-slot>
+                            <x-slot name="content">
+                                <x-jet-dropdown-link href="{{ route('home-start.all') }}">
+                                    {{ __('স্টার্টিং কন্টেন্ট') }}
+                                </x-jet-dropdown-link>
+
+                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                    {{ __('স্লাইড ম্যানেজ') }}
+                                </x-jet-dropdown-link>
+
+                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                    {{ __('আপকামিং ওয়ার্ক') }}
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                    {{ __('ইউটিউব লিংক') }}
+                                </x-jet-dropdown-link>
+                            </x-slot>
+                        </x-jet-dropdown>
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -34,6 +54,12 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('ক্যাম্প ম্যানেজ') }}
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('ফুটার ম্যানেজ') }}
                     </x-jet-nav-link>
                 </div>
             </div>
