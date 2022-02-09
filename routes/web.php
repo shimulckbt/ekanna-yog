@@ -21,7 +21,9 @@ use App\Http\Controllers\user\HomeUserController;
 |
 */
 
-Route::get('/', [HomeUserController::class, 'show'])->name('home');
+Route::get('/', [HomeUserController::class, 'showHome'])->name('home');
+Route::get('/camp', [HomeUserController::class, 'showCamp'])->name('camp');
+Route::get('/about', [HomeUserController::class, 'showAbout'])->name('about');
 Route::post('/', [HomeUserController::class, 'contactStore'])->name('contactHome.store');
 
 /////////         About Route        ///////////

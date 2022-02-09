@@ -28,13 +28,13 @@
         <header class="py-6">
             <div class="container flex justify-between items-center mx-auto px-24">
                 <a href="{{route('home')}}">
-                    <div class="text-3xl">৫১</div>
+                    <div class="text-3xl"><img class="h-20" src="{{asset('images/51yog.png')}}" alt=""></div>
                 </a>
                 <div class="space-x-16 text-xl">
-                    <a href="#" class="">হোম </a>
-                    <a href="#">ক্যাম্প</a>
-                    <a href="#">সম্পর্কে</a>
-                    <a href="#">যোগাযোগ</a>
+                    <a href="{{route('home')}}" class="">হোম </a>
+                    <a href="{{route('camp')}}">ক্যাম্প</a>
+                    <a href="{{route('about')}}">সম্পর্কে</a>
+                    <a href="#contact">যোগাযোগ</a>
                 </div>
             </div>
         </header>
@@ -88,7 +88,7 @@
 
     <!-- Form -->
 
-    <div class="bg-orange-50 h-full w-full">
+    <div id="contact" class="bg-orange-50 h-full w-full">
         <div class="container flex flex-col justify-center text-center text-black items-center content-center space-y-12 mx-auto px-24 py-16">
             <h1 class="text-5xl font-semibold">যোগাযোগ</h1>
             <form action="{{route('contactHome.store')}}" method="post" class="w-full max-w-lg text-left">
