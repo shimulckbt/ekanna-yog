@@ -14,5 +14,6 @@ class HomeStart extends Model
         'description',
         'yt_link',
         'image',
+        'is_active',
     ];
 }

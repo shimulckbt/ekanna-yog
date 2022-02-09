@@ -81,22 +81,24 @@
 
    <!-- Footer -->
    <div class="h-full w-full">
-      <div class="container flex flex-col justify-center text-center text-black items-center content-center space-y-4 mx-auto px-24 py-8">
-         <div class="flex flex-row justify-center text-center text-xl items-center space-x-4">
-            <div>
-               <a href="" class="text-black hover:text-red-900"><i class="fab fa-facebook-f"></i></a>
+      <div class="h-full w-full">
+         <div class="container flex flex-col justify-center text-center text-black items-center content-center space-y-4 mx-auto px-24 py-8">
+            <div class="flex flex-row justify-center text-center text-xl items-center space-x-4">
+               <div>
+                  <a href="{{isset($footerLink->facebook) ? $footerLink->facebook : '#'}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-facebook-f"></i></a>
+               </div>
+               <div>
+                  <a href="{{isset($footerLink->instagram) ? $footerLink->instagram : '#'}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-instagram"></i></a>
+               </div>
+               <div>
+                  <a href="{{isset($footerLink->youtube) ? $footerLink->youtube : '#'}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-youtube"></i></a>
+               </div>
             </div>
-            <div>
-               <a href="" class="text-black hover:text-red-900"><i class="fab fa-instagram"></i></a>
-            </div>
-            <div>
-               <a href="" class="text-black hover:text-red-900"><i class="fab fa-youtube"></i></a>
-            </div>
+            <p class="text-xs">
+               © 2022 ekannayog.com | Downloading or saving this content is
+               prohibited.
+            </p>
          </div>
-         <p class="text-xs">
-            © 2022 ekannayog.com | Downloading or saving this content is
-            prohibited.
-         </p>
       </div>
 </body>
 

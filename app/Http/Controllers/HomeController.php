@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HomeStart;
 use App\Models\VideoLink;
+use Illuminate\Support\Facades\DB;
 use Image;
 
 class HomeController extends Controller
@@ -15,6 +16,15 @@ class HomeController extends Controller
     {
         $homestarts = HomeStart::latest()->paginate(5);
         return view('admin.home.start.all', compact('homestarts'));
+    }
+
+    public function homeStartActive($id)
+    {
+        $homeActive = HomeStart::findOrFail($id);
+        $homeActive->is_active = 1;
+        $homeActive->save();
+        DB::table('home_starts')->where('id', '!=', $id)->update(['is_active' => 0]);
+        return redirect()->back();
     }
 
     public function homeStartAdd()
@@ -32,7 +42,7 @@ class HomeController extends Controller
             if ($size <= 2000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                 $last_img = 'images/home/home-start/' . $name_gen;
-                Image::make($images)->resize(1920, 1080)->save($last_img); // With Image Intervention
+                Image::make($images)->save($last_img); // With Image Intervention
 
                 $homestarts = new HomeStart();
                 $homestarts->title = $request->title;
@@ -73,7 +83,7 @@ class HomeController extends Controller
                 if ($size <= 2000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                     $last_img = 'images/home/home-start/' . $name_gen;
-                    Image::make($images)->resize(1920, 1080)->save($last_img); // With Image Intervention
+                    Image::make($images)->save($last_img); // With Image Intervention
 
                     $homestarts = HomeStart::findOrFail($id);
                     $homestarts->title = $request->title;
@@ -91,7 +101,7 @@ class HomeController extends Controller
                     unlink($old_image);
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                     $last_img = 'images/home/home-start/' . $name_gen;
-                    Image::make($images)->resize(1920, 1080)->save($last_img); // With Image Intervention
+                    Image::make($images)->save($last_img); // With Image Intervention
 
                     $homestarts = HomeStart::findOrFail($id);
                     $homestarts->title = $request->title;

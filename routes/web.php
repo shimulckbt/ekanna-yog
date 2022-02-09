@@ -39,6 +39,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/home/start/edit/{id}', [HomeController::class, 'homeStartEdit'])->name('home-start.edit');
     Route::post('/home/start/update/{id}', [HomeController::class, 'homeStartUpdate'])->name('home-start.update');
     Route::get('/home/start/delete/{id}', [HomeController::class, 'homeStartDelete'])->name('home-start.delete');
+    Route::get('/home/start/active/{id}', [HomeController::class, 'homeStartActive'])->name('home-start.active');
 
     //////////          ROUTE END FOR HOMESTART          //////////
 

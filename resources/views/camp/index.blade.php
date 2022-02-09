@@ -45,22 +45,19 @@
          <!-- Slider -->
          <div class="flex flex-row justify-center text-center text-black items-start space-x-2">
             <div class="w-1/2">
-               <img src="./4X4A2737.JPG" alt="name" class="h-96 rounded-xl" />
+               <img src="{{isset($camp->camp_image) ? asset($camp->camp_image) : 'https://images.pexels.com/photos/10204089/pexels-photo-10204089.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}}" alt="name" class="h-96 rounded-xl" />
             </div>
             <div class="flex flex-col text-left w-1/2 py-8 space-y-4">
-               <h1 class="text-xl font-semibold">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-                  voluptate.
-               </h1>
+               <h1 class="text-xl font-semibold">{{isset($camp->camp_title) ? $camp->camp_title : 'খালি'}}</h1>
                <h1 class="text-lg text-red-600 font-semibold italic">
-                  <span>স্থানঃ </span>একান্নযোগ
+                  <span>স্থানঃ </span>{{isset($camp->location) ? $camp->location : 'একান্ন যোগ'}}
                </h1>
                <div class="space-y-2">
                   <h1 class="text-lg font-semibold">
-                     <span>সংগঠনঃ </span>একান্নযোগ
+                     <span>সংগঠকঃ </span>{{isset($camp->organizer) ? $camp->organizer : 'একান্ন যোগ'}}
                   </h1>
                   <h1 class="text-lg font-semibold">
-                     <span>সদস্যঃ </span>১১৮<span> জন</span>
+                     <span>সদস্যঃ </span>{{isset($camp->member) ? $camp->member : '০'}}<span> জন</span>
                   </h1>
                </div>
             </div>
@@ -71,46 +68,41 @@
    <nav class=" py-6 bg-orange-200 text-black font-semibold">
       <div class="container flex justify-left items-center space-x-16 mx-auto px-24">
          <a href="#" class="">বিস্তারিত</a>
-         <a href="#">আপডেটস</a>
+         <!-- <a href="#">আপডেটস</a> -->
       </div>
    </nav>
    <!-- Details -->
    <div class="container py-6 mx-auto px-24">
       <div class="flex flex-col justify-left text-left text-black items-left space-y-4 py-4">
          <!-- Section -->
-         <h1 class="text-xl font-semibold">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-            voluptate.
-         </h1>
+         <h1 class="text-xl font-semibold">{{isset($camp->blog_title) ? $camp->blog_title : 'খালি'}}</h1>
          <div>
-            <img src="./4X4A2737.JPG" alt="name" class="w-9/12 h-96 rounded-xl" />
+            <img src="{{isset($camp->blog_image) ? asset($camp->blog_image) : 'https://images.pexels.com/photos/10204089/pexels-photo-10204089.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}}" alt="name" class="w-9/12 h-96 rounded-xl" />
          </div>
-         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
-            voluptatibus cumque debitis unde libero, inventore perferendis illo
-            repellendus cupiditate dolor quis placeat. Nesciunt, fugit earum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, tempora. Saepe obcaecati exercitationem veniam dolor, eum, laudantium reprehenderit et nisi quisquam debitis rerum soluta ab consequatur suscipit aut quaerat hic! Assumenda ea rem optio itaque amet odit, repudiandae consequatur quidem, vel saepe nobis quos illo quod beatae. Incidunt, obcaecati amet!
-         </p>
+         <p>{{isset($camp->blog) ? $camp->blog : 'খালি'}}</p>
       </div>
    </div>
 
    <!-- Footer -->
    <div class="h-full w-full">
-      <div class="container flex flex-col justify-center text-center text-black items-center content-center space-y-4 mx-auto px-24 py-8">
-         <div class="flex flex-row justify-center text-center text-xl items-center space-x-4">
-            <div>
-               <a href="" class="text-black hover:text-red-900"><i class="fab fa-facebook-f"></i></a>
+      <div class="h-full w-full">
+         <div class="container flex flex-col justify-center text-center text-black items-center content-center space-y-4 mx-auto px-24 py-8">
+            <div class="flex flex-row justify-center text-center text-xl items-center space-x-4">
+               <div>
+                  <a href="{{isset($footerLink->facebook) ? $footerLink->facebook : '#'}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-facebook-f"></i></a>
+               </div>
+               <div>
+                  <a href="{{isset($footerLink->instagram) ? $footerLink->instagram : '#'}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-instagram"></i></a>
+               </div>
+               <div>
+                  <a href="{{isset($footerLink->youtube) ? $footerLink->youtube : '#'}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-youtube"></i></a>
+               </div>
             </div>
-            <div>
-               <a href="" class="text-black hover:text-red-900"><i class="fab fa-instagram"></i></a>
-            </div>
-            <div>
-               <a href="" class="text-black hover:text-red-900"><i class="fab fa-youtube"></i></a>
-            </div>
+            <p class="text-xs">
+               © 2022 ekannayog.com | Downloading or saving this content is
+               prohibited.
+            </p>
          </div>
-         <p class="text-xs">
-            © 2022 ekannayog.com | Downloading or saving this content is
-            prohibited.
-         </p>
       </div>
 </body>
 

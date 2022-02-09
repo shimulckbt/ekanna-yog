@@ -17,7 +17,7 @@ class HomeUserController extends Controller
 {
     public function showHome()
     {
-        $homeStarts = HomeStart::first();
+        $homeStarts = HomeStart::where('is_active', 1)->first();
         $runningWork = Slide::first();
         $upcomingWork = Upcoming::first();
         $videoLink = VideoLink::first();
@@ -29,13 +29,15 @@ class HomeUserController extends Controller
     public function showCamp()
     {
         $camp = Camp::first();
-        return view('camp.index', compact('camp'));
+        $footerLink = Footer::first();
+        return view('camp.index', compact('camp', 'footerLink'));
     }
 
     public function showAbout()
     {
         $about = About::first();
-        return view('about', compact('about'));
+        $footerLink = Footer::first();
+        return view('about', compact('about', 'footerLink'));
     }
 
     public function contactStore(Request $request)
