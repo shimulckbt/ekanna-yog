@@ -8,6 +8,7 @@ use App\Http\Controllers\SlideController;
 use App\Http\Controllers\UpcomingWorkController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\CampController;
+use App\Http\Controllers\user\HomeUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,8 @@ use App\Http\Controllers\CampController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeUserController::class, 'show']);
+Route::post('/', [HomeUserController::class, 'contactStore'])->name('contactHome.store');
 
 /////////         About Route        ///////////
 
@@ -116,6 +116,18 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/camp/delete/{id}', [CampController::class, 'campDelete'])->name('camp.delete');
 
     /////////          ROUTE ENDS FOR CAMP         ///////////
+
+
+    /////////          ROUTE STARTS FOR CAMP UPDATES         ///////////
+
+    Route::get('/camp/update/all', [CampController::class, 'campUpdateShow'])->name('camp-update.all');
+    Route::get('/camp/update/add', [CampController::class, 'campUpdateAdd'])->name('camp-update.add');
+    Route::post('/cam/updatep/store', [CampController::class, 'campUpdateStore'])->name('camp-update.store');
+    Route::get('/camp/update/edit/{id}', [CampController::class, 'campUpdateEdit'])->name('camp-update.edit');
+    Route::post('/cam/updatep/update/{id}', [CampController::class, 'campUpdateUpdate'])->name('camp-update.update');
+    Route::get('/camp/update/delete/{id}', [CampController::class, 'campUpdateDelete'])->name('camp-update.delete');
+
+    /////////          ROUTE ENDS FOR CAMP UPDATES         ///////////
 
 
 

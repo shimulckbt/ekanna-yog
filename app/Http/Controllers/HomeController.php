@@ -32,7 +32,7 @@ class HomeController extends Controller
             if ($size <= 2000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                 $last_img = 'images/home/home-start/' . $name_gen;
-                Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                Image::make($images)->resize(1920, 1080)->save($last_img); // With Image Intervention
 
                 $homestarts = new HomeStart();
                 $homestarts->title = $request->title;
@@ -70,10 +70,10 @@ class HomeController extends Controller
         if ($images) {
             $size = $request->file('image')->getSize();
             if (empty($old_image)) {
-                if ($size <= 5000000) {
+                if ($size <= 2000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                     $last_img = 'images/home/home-start/' . $name_gen;
-                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                    Image::make($images)->resize(1920, 1080)->save($last_img); // With Image Intervention
 
                     $homestarts = HomeStart::findOrFail($id);
                     $homestarts->title = $request->title;
@@ -87,11 +87,11 @@ class HomeController extends Controller
                     return Redirect()->route('home-start.all')->with('error', 'Image is greater than 5 MB');
                 }
             } else {
-                if ($size <= 5000000) {
+                if ($size <= 2000000) {
                     unlink($old_image);
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                     $last_img = 'images/home/home-start/' . $name_gen;
-                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                    Image::make($images)->resize(1920, 1080)->save($last_img); // With Image Intervention
 
                     $homestarts = HomeStart::findOrFail($id);
                     $homestarts->title = $request->title;

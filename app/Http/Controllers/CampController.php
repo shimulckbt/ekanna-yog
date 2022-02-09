@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Camp;
+use App\Models\CampUpdate;
 use Image;
 
 class CampController extends Controller
@@ -192,5 +193,36 @@ class CampController extends Controller
             Camp::find($id)->delete();
             return Redirect()->back()->with('success', 'Content Deleted Successfully');
         }
+    }
+
+
+
+    /////////       CAMP UPDATE METHODS START        ///////////
+
+    public function campUpdateShow()
+    {
+        $camp_updates = Camp::latest()->paginate(5);
+        return view('admin.camp.update.all', compact('camp_updates'));
+    }
+
+    public function campUpdateAdd()
+    {
+        return view('admin.camp.update.add');
+    }
+
+    public function campUpdateStore()
+    {
+    }
+
+    public function campUpdateEdit()
+    {
+    }
+
+    public function campUpdateUpdate()
+    {
+    }
+
+    public function campUpdateDelete()
+    {
     }
 }
