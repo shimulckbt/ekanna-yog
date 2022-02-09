@@ -71,9 +71,9 @@
         <div class="container flex flex-col justify-center text-center text-black items-center content-center space-y-12 mx-auto px-24 py-16">
             <h1 class="text-5xl font-semibold">আসন্ন কর্মশালা</h1>
             <!-- Section -->
-            <h1 class="text-xl font-semibold">{{$upcomingWork->title}}</h1>
+            <h1 class="text-xl font-semibold">{{isset($upcomingWork->title) ? $upcomingWork->title : 'খালি'}}</h1>
             <img src="{{isset($upcomingWork->image) ? asset($upcomingWork->image) : 'https://images.pexels.com/photos/10204089/pexels-photo-10204089.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}}" alt="name" class="h-96 rounded-xl" />
-            <p class="px-48">{{$upcomingWork->description}}</p>
+            <p class="px-48">{{isset($upcomingWork->description) ? $upcomingWork->description : 'খালি'}}</p>
             <div>
                 <a href="#" class="flex justify-center text-xl font-semibold text-red-900 text-center items-center hover:text-red-600 rounded-xl">আরো দেখুন</a>
             </div>
@@ -150,13 +150,13 @@
         <div class="container flex flex-col justify-center text-center text-black items-center content-center space-y-4 mx-auto px-24 py-8">
             <div class="flex flex-row justify-center text-center text-xl items-center space-x-4">
                 <div>
-                    <a href="{{$footerLink->facebook}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{{isset($footerLink->facebook) ? $footerLink->facebook : '#'}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-facebook-f"></i></a>
                 </div>
                 <div>
-                    <a href="{{$footerLink->instagram}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-instagram"></i></a>
+                    <a href="{{isset($footerLink->instagram) ? $footerLink->instagram : '#'}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-instagram"></i></a>
                 </div>
                 <div>
-                    <a href="{{$footerLink->youtube}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-youtube"></i></a>
+                    <a href="{{isset($footerLink->youtube) ? $footerLink->youtube : '#'}}" target="_blank" class="text-black hover:text-red-900"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <p class="text-xs">
