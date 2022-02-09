@@ -17,29 +17,27 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex cursor-pointer mr-2 pt-5">
-                    <x-jet-nav-link :active="request()->routeIs('home-start.all')">
-                        <x-jet-dropdown>
-                            <x-slot name="trigger">
-                                {{ __('হোম ম্যানেজ') }}
-                            </x-slot>
-                            <x-slot name="content">
-                                <x-jet-dropdown-link href="{{ route('home-start.all') }}">
-                                    {{ __('স্টার্টিং কন্টেন্ট') }}
-                                </x-jet-dropdown-link>
+                    <x-jet-dropdown>
+                        <x-slot name="trigger">
+                            <div class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition">{{ __('হোম ম্যানেজ') }}</div>
+                        </x-slot>
+                        <x-slot name="content">
+                            <x-jet-dropdown-link href="{{ route('home-start.all') }}">
+                                {{ __('স্টার্টিং কন্টেন্ট') }}
+                            </x-jet-dropdown-link>
 
-                                <x-jet-dropdown-link href="{{ route('slide.all') }}">
-                                    {{ __('রানিং ওয়ার্ক') }}
-                                </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('slide.all') }}">
+                                {{ __('রানিং ওয়ার্ক') }}
+                            </x-jet-dropdown-link>
 
-                                <x-jet-dropdown-link href="{{ route('upcoming-work.all') }}">
-                                    {{ __('আপকামিং ওয়ার্ক') }}
-                                </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{ route('video-link.all') }}">
-                                    {{ __('ইউটিউব লিংক') }}
-                                </x-jet-dropdown-link>
-                            </x-slot>
-                        </x-jet-dropdown>
-                    </x-jet-nav-link>
+                            <x-jet-dropdown-link href="{{ route('upcoming-work.all') }}">
+                                {{ __('আপকামিং ওয়ার্ক') }}
+                            </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('video-link.all') }}">
+                                {{ __('ইউটিউব লিংক') }}
+                            </x-jet-dropdown-link>
+                        </x-slot>
+                    </x-jet-dropdown>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('about.all') }}" :active="request()->routeIs('about.all')">

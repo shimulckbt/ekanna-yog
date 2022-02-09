@@ -15,11 +15,11 @@ class HomeUserController extends Controller
 {
     public function show()
     {
-        $homeStarts = HomeStart::find(2);
-        $runningWork = Slide::find(4);
-        $upcomingWork = Upcoming::find(4);
-        $videoLink = VideoLink::find(2);
-        $footerLink = Footer::find(3);
+        $homeStarts = HomeStart::first();
+        $runningWork = Slide::first();
+        $upcomingWork = Upcoming::first();
+        $videoLink = VideoLink::first();
+        $footerLink = Footer::first();
 
         return view('welcome', compact('homeStarts', 'runningWork', 'upcomingWork', 'videoLink', 'footerLink'));
     }

@@ -11,8 +11,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-                atma: ['Atma']
+                sans: ['Noto Sans Bengali', ...defaultTheme.fontFamily.sans],
             },
         },
     },
