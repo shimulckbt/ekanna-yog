@@ -14,7 +14,7 @@
                <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="টাইটেল যুক্ত করুন" required>
             </div>
             <div class="mb-6">
-               <label for="video_link" class="block mb-2 text-sm font-medium text-gray-900">ভিডিও লিংক</label>
+               <label for="video_link" class="block mb-2 text-sm font-medium text-gray-900">ভিডিও আইডি</label>
                <input type="text" name="video_link" id="video_link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ভিডিও লিঙ্ক যুক্ত করুন">
             </div>
             <button type="submit" class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center mr-2 ">নতুন যুক্ত করুন</button>

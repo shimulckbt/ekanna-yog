@@ -43,7 +43,7 @@
             <h1 class="text-7xl">{{isset($homeStarts->title) ? ($homeStarts->title) : 'খালি'}}</h1>
             <p class="px-48">{{isset($homeStarts->description) ? ($homeStarts->description) : 'খালি'}}</p>
             <div>
-                <a href="{{$homeStarts->yt_link}}" target="_blank" class="self-center text-2xl text-center bg-red-900 hover:bg-red-600 px-4 py-2 rounded-xl"><i class="fab fa-youtube pr-2"></i>একান্নযোগ</a>
+                <a href="{{isset($homeStarts->yt_link) ? ($homeStarts->yt_link) : '#'}}" target="_blank" class="self-center text-2xl text-center bg-red-900 hover:bg-red-600 px-4 py-2 rounded-xl"><i class="fab fa-youtube pr-2"></i>একান্নযোগ</a>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
                     <h1 class="text-xl font-semibold">{{isset($runningWork->title) ? ($runningWork->title) : 'খালি'}}</h1>
                     <p>{{isset($homeStarts->description) ? ($homeStarts->description) : 'খালি'}}</p>
                     <div>
-                        <a href="{{asset($runningWork->yt_link)}}" target="_blank" class="flex justify-center text-2xl font-semibold text-red-900 text-center items-center hover:text-red-600 px-4 py-2 rounded-xl">দেখুন<i class="fab fa-youtube pl-2"></i></a>
+                        <a href="{{isset($runningWork->yt_link) ? ($runningWork->yt_link) : '#'}}" target="_blank" class="flex justify-center text-2xl font-semibold text-red-900 text-center items-center hover:text-red-600 px-4 py-2 rounded-xl">দেখুন<i class="fab fa-youtube pl-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
     <!-- Video Section -->
 
     <div class="aspect-video">
-        <iframe src="{{$videoLink->video_link . '?autoplay=1&mute=1&loop=1&controls=0'}}" allow="autoplay" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+        <iframe src="{{'https://www.youtube.com/embed/' . (isset($videoLink->video_link) ? $videoLink->video_link : 'WfJYsQ1XK48') . '?autoplay=1&mute=1&loop=1&controls=0'}}" allow="autoplay" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
     </div>
 
     <!-- Form -->
