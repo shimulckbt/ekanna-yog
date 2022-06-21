@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Upcoming;
-use Image;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class UpcomingWorkController extends Controller
 {
@@ -29,7 +29,7 @@ class UpcomingWorkController extends Controller
             if ($size <= 2000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                 $last_img = 'images/home/upcoming/' . $name_gen;
-                Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                Image::make($images)->save($last_img); // With Image Intervention
 
                 $upcomingWorks = new Upcoming();
                 $upcomingWorks->title = $request->title;
@@ -68,7 +68,7 @@ class UpcomingWorkController extends Controller
                 if ($size <= 2000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                     $last_img = 'images/home/upcoming/' . $name_gen;
-                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                    Image::make($images)->save($last_img); // With Image Intervention
 
                     $upcomingWorks = Upcoming::findOrFail($id);
                     $upcomingWorks->title = $request->title;
@@ -85,7 +85,7 @@ class UpcomingWorkController extends Controller
                     unlink($old_image);
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                     $last_img = 'images/home/upcoming/' . $name_gen;
-                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                    Image::make($images)->save($last_img); // With Image Intervention
 
                     $upcomingWorks = Upcoming::findOrFail($id);
                     $upcomingWorks->title = $request->title;

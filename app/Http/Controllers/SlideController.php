@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Slide;
-use Image;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class SlideController extends Controller
 {
@@ -29,7 +29,7 @@ class SlideController extends Controller
             if ($size <= 2000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                 $last_img = 'images/home/slide/' . $name_gen;
-                Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                Image::make($images)->save($last_img); // With Image Intervention
 
                 $slides = new Slide();
                 $slides->title = $request->title;
@@ -70,7 +70,7 @@ class SlideController extends Controller
                 if ($size <= 5000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                     $last_img = 'images/home/slide/' . $name_gen;
-                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                    Image::make($images)->save($last_img); // With Image Intervention
 
                     $slides = Slide::findOrFail($id);
                     $slides->title = $request->title;
@@ -88,7 +88,7 @@ class SlideController extends Controller
                     unlink($old_image);
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                     $last_img = 'images/home/slide/' . $name_gen;
-                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                    Image::make($images)->save($last_img); // With Image Intervention
 
                     $slides = Slide::findOrFail($id);
                     $slides->title = $request->title;

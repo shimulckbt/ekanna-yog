@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Camp;
 use App\Models\CampUpdate;
-use Image;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class CampController extends Controller
 {
@@ -43,8 +43,8 @@ class CampController extends Controller
                 $name_gen_blog_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
                 $camp_img_path = 'images/camp/' . $name_gen_camp_image;
                 $blog_img_path = 'images/blog/' . $name_gen_blog_image;
-                Image::make($camp_image)->resize(600, 400)->save($camp_img_path);
-                Image::make($blog_image)->resize(600, 400)->save($blog_img_path);
+                Image::make($camp_image)->save($camp_img_path);
+                Image::make($blog_image)->save($blog_img_path);
 
                 $camps = new Camp();
                 $camps->camp_title = $request->camp_title;
@@ -88,7 +88,7 @@ class CampController extends Controller
                     $camp_image = $request->file('camp_image');
                     $name_gen_camp_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
                     $camp_img_path = 'images/camp/' . $name_gen_camp_image;
-                    Image::make($camp_image)->resize(600, 400)->save($camp_img_path);
+                    Image::make($camp_image)->save($camp_img_path);
 
                     $camps = Camp::findOrFail($id);
                     $camps->camp_title = $request->camp_title;
@@ -113,7 +113,7 @@ class CampController extends Controller
                     $blog_image = $request->file('blog_image');
                     $name_gen_blog_image = hexdec(uniqid()) . '.' . $blog_image->getClientOriginalExtension();
                     $blog_img_path = 'images/blog/' . $name_gen_blog_image;
-                    Image::make($blog_image)->resize(600, 400)->save($blog_img_path);
+                    Image::make($blog_image)->save($blog_img_path);
 
                     $camps = Camp::findOrFail($id);
                     $camps->camp_title = $request->camp_title;
@@ -143,8 +143,8 @@ class CampController extends Controller
                     $name_gen_blog_image = hexdec(uniqid()) . '.' . $blog_image->getClientOriginalExtension();
                     $camp_img_path = 'images/camp/' . $name_gen_camp_image;
                     $blog_img_path = 'images/blog/' . $name_gen_blog_image;
-                    Image::make($camp_image)->resize(600, 400)->save($camp_img_path);
-                    Image::make($blog_image)->resize(600, 400)->save($blog_img_path);
+                    Image::make($camp_image)->save($camp_img_path);
+                    Image::make($blog_image)->save($blog_img_path);
 
                     $camps = Camp::findOrFail($id);
                     $camps->camp_title = $request->camp_title;

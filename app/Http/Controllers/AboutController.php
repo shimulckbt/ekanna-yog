@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\About;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Image;
+use Intervention\Image\Facades\Image;
 
 class AboutController extends Controller
 {
@@ -30,7 +30,7 @@ class AboutController extends Controller
             if ($size <= 5000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
                 $last_img = 'images/about/' . $name_gen;
-                Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                Image::make($images)->save($last_img); // With Image Intervention
 
                 $abouts = new About();
                 $abouts->title = $request->title;
