@@ -29,7 +29,7 @@ class AboutController extends Controller
             $size = $request->file('image')->getSize();
             if ($size <= 5000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                $last_img = 'images/about/' . $name_gen;
+                $last_img = public_path('images/about/') . $name_gen;
                 Image::make($images)->save($last_img); // With Image Intervention
 
                 $abouts = new About();
@@ -70,8 +70,8 @@ class AboutController extends Controller
             if (empty($old_image)) {
                 if ($size <= 5000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                    $last_img = 'images/about/' . $name_gen;
-                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                    $last_img = public_path('images/about/') . $name_gen;
+                    Image::make($images)->save($last_img); // With Image Intervention
 
                     $abouts = About::findOrFail($id);
                     $abouts->title = $request->title;
@@ -88,8 +88,8 @@ class AboutController extends Controller
                 if ($size <= 5000000) {
                     unlink($old_image);
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                    $last_img = 'images/about/' . $name_gen;
-                    Image::make($images)->resize(600, 400)->save($last_img); // With Image Intervention
+                    $last_img = public_path('images/about/') . $name_gen;
+                    Image::make($images)->save($last_img); // With Image Intervention
 
                     $abouts = About::findOrFail($id);
                     $abouts->title = $request->title;

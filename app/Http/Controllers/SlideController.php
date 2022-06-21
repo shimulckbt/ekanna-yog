@@ -28,7 +28,7 @@ class SlideController extends Controller
             $size = $request->file('image')->getSize();
             if ($size <= 2000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                $last_img = 'images/home/slide/' . $name_gen;
+                $last_img = public_path('images/home/slide/') . $name_gen;
                 Image::make($images)->save($last_img); // With Image Intervention
 
                 $slides = new Slide();
@@ -69,7 +69,7 @@ class SlideController extends Controller
             if (empty($old_image)) {
                 if ($size <= 5000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                    $last_img = 'images/home/slide/' . $name_gen;
+                    $last_img = public_path('images/home/slide/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
                     $slides = Slide::findOrFail($id);
@@ -87,7 +87,7 @@ class SlideController extends Controller
                 if ($size <= 5000000) {
                     unlink($old_image);
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                    $last_img = 'images/home/slide/' . $name_gen;
+                    $last_img = public_path('images/home/slide/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
                     $slides = Slide::findOrFail($id);

@@ -41,8 +41,8 @@ class CampController extends Controller
             if (($camp_image_size <= 2000000) && ($blog_image_size <= 2000000)) {
                 $name_gen_camp_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
                 $name_gen_blog_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
-                $camp_img_path = 'images/camp/' . $name_gen_camp_image;
-                $blog_img_path = 'images/blog/' . $name_gen_blog_image;
+                $camp_img_path = public_path('images/camp/') . $name_gen_camp_image;
+                $blog_img_path = public_path('images/blog/') . $name_gen_blog_image;
                 Image::make($camp_image)->save($camp_img_path);
                 Image::make($blog_image)->save($blog_img_path);
 
@@ -87,7 +87,7 @@ class CampController extends Controller
                     unlink($old_camp_image);
                     $camp_image = $request->file('camp_image');
                     $name_gen_camp_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
-                    $camp_img_path = 'images/camp/' . $name_gen_camp_image;
+                    $camp_img_path = public_path('images/camp/') . $name_gen_camp_image;
                     Image::make($camp_image)->save($camp_img_path);
 
                     $camps = Camp::findOrFail($id);
@@ -112,7 +112,7 @@ class CampController extends Controller
                     unlink($old_blog_image);
                     $blog_image = $request->file('blog_image');
                     $name_gen_blog_image = hexdec(uniqid()) . '.' . $blog_image->getClientOriginalExtension();
-                    $blog_img_path = 'images/blog/' . $name_gen_blog_image;
+                    $blog_img_path = public_path('images/blog/') . $name_gen_blog_image;
                     Image::make($blog_image)->save($blog_img_path);
 
                     $camps = Camp::findOrFail($id);
@@ -141,8 +141,8 @@ class CampController extends Controller
                     $blog_image = $request->file('blog_image');
                     $name_gen_camp_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
                     $name_gen_blog_image = hexdec(uniqid()) . '.' . $blog_image->getClientOriginalExtension();
-                    $camp_img_path = 'images/camp/' . $name_gen_camp_image;
-                    $blog_img_path = 'images/blog/' . $name_gen_blog_image;
+                    $camp_img_path = public_path('images/camp/') . $name_gen_camp_image;
+                    $blog_img_path = public_path('images/blog/') . $name_gen_blog_image;
                     Image::make($camp_image)->save($camp_img_path);
                     Image::make($blog_image)->save($blog_img_path);
 

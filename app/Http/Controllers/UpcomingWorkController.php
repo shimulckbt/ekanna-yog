@@ -28,7 +28,7 @@ class UpcomingWorkController extends Controller
             $size = $request->file('image')->getSize();
             if ($size <= 2000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                $last_img = 'images/home/upcoming/' . $name_gen;
+                $last_img = public_path('images/home/upcoming/') . $name_gen;
                 Image::make($images)->save($last_img); // With Image Intervention
 
                 $upcomingWorks = new Upcoming();
@@ -67,7 +67,7 @@ class UpcomingWorkController extends Controller
             if (empty($old_image)) {
                 if ($size <= 2000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                    $last_img = 'images/home/upcoming/' . $name_gen;
+                    $last_img = public_path('images/home/upcoming/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
                     $upcomingWorks = Upcoming::findOrFail($id);
@@ -84,7 +84,7 @@ class UpcomingWorkController extends Controller
                 if ($size <= 2000000) {
                     unlink($old_image);
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
-                    $last_img = 'images/home/upcoming/' . $name_gen;
+                    $last_img = public_path('images/home/upcoming/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
                     $upcomingWorks = Upcoming::findOrFail($id);
