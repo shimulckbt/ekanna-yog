@@ -29,6 +29,7 @@ class AboutController extends Controller
             $size = $request->file('image')->getSize();
             if ($size <= 5000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                $path = 'images/about/' . $name_gen;
                 $last_img = public_path('images/about/') . $name_gen;
                 Image::make($images)->save($last_img); // With Image Intervention
 
@@ -36,7 +37,7 @@ class AboutController extends Controller
                 $abouts->title = $request->title;
                 $abouts->yt_link = $request->yt_link;
                 $abouts->description = $request->description;
-                $abouts->image = $last_img;
+                $abouts->image = $path;
                 $abouts->save();
 
                 return Redirect()->route('about.all')->with('success', 'About content Inserted Successfully');
@@ -70,6 +71,7 @@ class AboutController extends Controller
             if (empty($old_image)) {
                 if ($size <= 5000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                    $path = 'images/about/' . $name_gen;
                     $last_img = public_path('images/about/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
@@ -77,7 +79,7 @@ class AboutController extends Controller
                     $abouts->title = $request->title;
                     $abouts->yt_link = $request->yt_link;
                     $abouts->description = $request->description;
-                    $abouts->image = $last_img;
+                    $abouts->image = $path;
                     $abouts->update();
 
                     return Redirect()->route('about.all')->with('success', 'About content Updated Successfully');
@@ -86,8 +88,9 @@ class AboutController extends Controller
                 }
             } else {
                 if ($size <= 5000000) {
-                    unlink($old_image);
+                    unlink(public_path($old_image));
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                    $path = 'images/about/' . $name_gen;
                     $last_img = public_path('images/about/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
@@ -95,7 +98,7 @@ class AboutController extends Controller
                     $abouts->title = $request->title;
                     $abouts->yt_link = $request->yt_link;
                     $abouts->description = $request->description;
-                    $abouts->image = $last_img;
+                    $abouts->image = $path;
                     $abouts->update();
 
                     return Redirect()->route('about.all')->with('success', 'About content Updated Successfully');
@@ -122,7 +125,7 @@ class AboutController extends Controller
             About::find($id)->delete();
             return Redirect()->back()->with('success', 'Content Deleted Successfully');
         } else {
-            unlink($old_image);
+            unlink(public_path($old_image));
             About::find($id)->delete();
             return Redirect()->back()->with('success', 'Content Deleted Successfully');
         }

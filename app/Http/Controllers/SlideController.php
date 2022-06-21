@@ -28,6 +28,7 @@ class SlideController extends Controller
             $size = $request->file('image')->getSize();
             if ($size <= 2000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                $last_db_img = 'images/home/slide/' . $name_gen;
                 $last_img = public_path('images/home/slide/') . $name_gen;
                 Image::make($images)->save($last_img); // With Image Intervention
 
@@ -35,7 +36,7 @@ class SlideController extends Controller
                 $slides->title = $request->title;
                 $slides->yt_link = $request->yt_link;
                 $slides->description = $request->description;
-                $slides->image = $last_img;
+                $slides->image = $last_db_img;
                 $slides->save();
 
                 return Redirect()->route('slide.all')->with('success', 'home content Inserted Successfully');
@@ -69,6 +70,7 @@ class SlideController extends Controller
             if (empty($old_image)) {
                 if ($size <= 5000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                    $last_db_img = 'images/home/slide/' . $name_gen;
                     $last_img = public_path('images/home/slide/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
@@ -76,7 +78,7 @@ class SlideController extends Controller
                     $slides->title = $request->title;
                     $slides->yt_link = $request->yt_link;
                     $slides->description = $request->description;
-                    $slides->image = $last_img;
+                    $slides->image = $last_db_img;
                     $slides->update();
 
                     return Redirect()->route('slide.all')->with('success', 'home content Updated Successfully');
@@ -85,8 +87,9 @@ class SlideController extends Controller
                 }
             } else {
                 if ($size <= 5000000) {
-                    unlink($old_image);
+                    unlink(public_path($old_image));
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                    $last_db_img = 'images/home/slide/' . $name_gen;
                     $last_img = public_path('images/home/slide/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
@@ -94,7 +97,7 @@ class SlideController extends Controller
                     $slides->title = $request->title;
                     $slides->yt_link = $request->yt_link;
                     $slides->description = $request->description;
-                    $slides->image = $last_img;
+                    $slides->image = $last_db_img;
                     $slides->update();
 
                     return Redirect()->route('slide.all')->with('success', 'home content Updated Successfully');
@@ -121,7 +124,7 @@ class SlideController extends Controller
             Slide::find($id)->delete();
             return Redirect()->back()->with('success', 'Content Deleted Successfully');
         } else {
-            unlink($old_image);
+            unlink(public_path($old_image));
             Slide::find($id)->delete();
             return Redirect()->back()->with('success', 'Content Deleted Successfully');
         }

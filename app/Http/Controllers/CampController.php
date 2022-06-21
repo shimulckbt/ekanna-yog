@@ -41,6 +41,8 @@ class CampController extends Controller
             if (($camp_image_size <= 2000000) && ($blog_image_size <= 2000000)) {
                 $name_gen_camp_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
                 $name_gen_blog_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
+                $camp_img_db_path = 'images/camp/' . $name_gen_camp_image;
+                $blog_img_db_path = 'images/blog/' . $name_gen_blog_image;
                 $camp_img_path = public_path('images/camp/') . $name_gen_camp_image;
                 $blog_img_path = public_path('images/blog/') . $name_gen_blog_image;
                 Image::make($camp_image)->save($camp_img_path);
@@ -51,9 +53,9 @@ class CampController extends Controller
                 $camps->location = $request->location;
                 $camps->organizer = $request->organizer;
                 $camps->member = $request->member;
-                $camps->camp_image = $camp_img_path;
+                $camps->camp_image = $camp_img_db_path;
                 $camps->blog_title = $request->blog_title;
-                $camps->blog_image = $blog_img_path;
+                $camps->blog_image = $blog_img_db_path;
                 $camps->blog = $request->blog;
 
                 $camps->save();
@@ -84,9 +86,10 @@ class CampController extends Controller
             if ($camp_image) {
                 $camp_image_size = $request->file('camp_image')->getSize();
                 if ($camp_image_size <= 2000000) {
-                    unlink($old_camp_image);
+                    unlink(public_path($old_camp_image));
                     $camp_image = $request->file('camp_image');
                     $name_gen_camp_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
+                    $camp_img_db_path = 'images/camp/' . $name_gen_camp_image;
                     $camp_img_path = public_path('images/camp/') . $name_gen_camp_image;
                     Image::make($camp_image)->save($camp_img_path);
 
@@ -95,7 +98,7 @@ class CampController extends Controller
                     $camps->location = $request->location;
                     $camps->organizer = $request->organizer;
                     $camps->member = $request->member;
-                    $camps->camp_image = $camp_img_path;
+                    $camps->camp_image = $camp_img_db_path;
                     $camps->blog_title = $request->blog_title;
                     $camps->blog = $request->blog;
 
@@ -109,9 +112,10 @@ class CampController extends Controller
             } elseif ($blog_image) {
                 $blog_image_size = $request->file('blog_image')->getSize();
                 if ($blog_image_size <= 2000000) {
-                    unlink($old_blog_image);
+                    unlink(public_path($old_blog_image));
                     $blog_image = $request->file('blog_image');
                     $name_gen_blog_image = hexdec(uniqid()) . '.' . $blog_image->getClientOriginalExtension();
+                    $blog_img_db_path = 'images/blog/' . $name_gen_blog_image;
                     $blog_img_path = public_path('images/blog/') . $name_gen_blog_image;
                     Image::make($blog_image)->save($blog_img_path);
 
@@ -121,7 +125,7 @@ class CampController extends Controller
                     $camps->organizer = $request->organizer;
                     $camps->member = $request->member;
                     $camps->blog_title = $request->blog_title;
-                    $camps->blog_image = $blog_img_path;
+                    $camps->blog_image = $blog_img_db_path;
                     $camps->blog = $request->blog;
 
                     $camps->update();
@@ -141,6 +145,8 @@ class CampController extends Controller
                     $blog_image = $request->file('blog_image');
                     $name_gen_camp_image = hexdec(uniqid()) . '.' . $camp_image->getClientOriginalExtension();
                     $name_gen_blog_image = hexdec(uniqid()) . '.' . $blog_image->getClientOriginalExtension();
+                    $camp_img__db_path = 'images/camp/' . $name_gen_camp_image;
+                    $blog_img_db_path = 'images/blog/' . $name_gen_blog_image;
                     $camp_img_path = public_path('images/camp/') . $name_gen_camp_image;
                     $blog_img_path = public_path('images/blog/') . $name_gen_blog_image;
                     Image::make($camp_image)->save($camp_img_path);
@@ -151,9 +157,9 @@ class CampController extends Controller
                     $camps->location = $request->location;
                     $camps->organizer = $request->organizer;
                     $camps->member = $request->member;
-                    $camps->camp_image = $camp_img_path;
+                    $camps->camp_image = $camp_img__db_path;
                     $camps->blog_title = $request->blog_title;
-                    $camps->blog_image = $blog_img_path;
+                    $camps->blog_image = $blog_img_db_path;
                     $camps->blog = $request->blog;
 
                     $camps->update();
@@ -188,8 +194,8 @@ class CampController extends Controller
             Camp::find($id)->delete();
             return Redirect()->back()->with('success', 'Content Deleted Successfully');
         } else {
-            unlink($old_camp_image);
-            unlink($old_blog_image);
+            unlink(public_path($old_camp_image));
+            unlink(public_path($old_blog_image));
             Camp::find($id)->delete();
             return Redirect()->back()->with('success', 'Content Deleted Successfully');
         }

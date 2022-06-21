@@ -28,13 +28,14 @@ class UpcomingWorkController extends Controller
             $size = $request->file('image')->getSize();
             if ($size <= 2000000) {
                 $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                $last_db_img = public_path('images/home/upcoming/') . $name_gen;
                 $last_img = public_path('images/home/upcoming/') . $name_gen;
                 Image::make($images)->save($last_img); // With Image Intervention
 
                 $upcomingWorks = new Upcoming();
                 $upcomingWorks->title = $request->title;
                 $upcomingWorks->description = $request->description;
-                $upcomingWorks->image = $last_img;
+                $upcomingWorks->image = $last_db_img;
                 $upcomingWorks->save();
 
                 return Redirect()->route('upcoming-work.all')->with('success', 'home content Inserted Successfully');
@@ -67,13 +68,14 @@ class UpcomingWorkController extends Controller
             if (empty($old_image)) {
                 if ($size <= 2000000) {
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                    $last_db_img = public_path('images/home/upcoming/') . $name_gen;
                     $last_img = public_path('images/home/upcoming/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
                     $upcomingWorks = Upcoming::findOrFail($id);
                     $upcomingWorks->title = $request->title;
                     $upcomingWorks->description = $request->description;
-                    $upcomingWorks->image = $last_img;
+                    $upcomingWorks->image = $last_db_img;
                     $upcomingWorks->update();
 
                     return Redirect()->route('upcoming-work.all')->with('success', 'home content Updated Successfully');
@@ -82,8 +84,9 @@ class UpcomingWorkController extends Controller
                 }
             } else {
                 if ($size <= 2000000) {
-                    unlink($old_image);
+                    unlink(public_path($old_image));
                     $name_gen = hexdec(uniqid()) . '.' . $images->getClientOriginalExtension();
+                    $last_db_img = public_path('images/home/upcoming/') . $name_gen;
                     $last_img = public_path('images/home/upcoming/') . $name_gen;
                     Image::make($images)->save($last_img); // With Image Intervention
 
@@ -91,7 +94,7 @@ class UpcomingWorkController extends Controller
                     $upcomingWorks->title = $request->title;
 
                     $upcomingWorks->description = $request->description;
-                    $upcomingWorks->image = $last_img;
+                    $upcomingWorks->image = $last_db_img;
                     $upcomingWorks->update();
 
                     return Redirect()->route('upcoming-work.all')->with('success', 'home content Updated Successfully');
@@ -117,7 +120,7 @@ class UpcomingWorkController extends Controller
             Upcoming::find($id)->delete();
             return Redirect()->back()->with('success', 'Content Deleted Successfully');
         } else {
-            unlink($old_image);
+            unlink(public_path($old_image));
             Upcoming::find($id)->delete();
             return Redirect()->back()->with('success', 'Content Deleted Successfully');
         }
