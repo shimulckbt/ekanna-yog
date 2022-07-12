@@ -26,7 +26,7 @@
 <body class="text-white">
     <!-- Hero Section Starts Here -->
     <div class="h-full w-full bg-cover"
-        style="background-image:url({{ isset($homeStarts->image) ? asset($homeStarts->image) : 'https://images.pexels.com/photos/10204089/pexels-photo-10204089.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260' }});">
+        style="background-image:url({{ isset($homeStarts->image) ? asset($homeStarts->image) : 'https://images.pexels.com/photos/10204089/pexels-photo-10204089.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260' }}); background-attachment:fixed;">
         <!-- Navbar -->
         <header class="py-6">
             <div class="container flex justify-between items-center mx-auto px-24">
